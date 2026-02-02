@@ -1,0 +1,105 @@
+/* ===== HIRE ME SECTION ===== */
+.hireme {
+  max-width: 1000px;
+  margin: 120px auto;
+  padding: 80px 90px;
+  background: linear-gradient(
+    135deg,
+    var(--bg-white) 65%,
+    var(--pink-soft)
+  );
+  border-radius: 40px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+/* decorative circle */
+.hireme::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: -80px;
+  width: 180px;
+  height: 180px;
+  background: var(--pink-baby);
+  border-radius: 50%;
+  opacity: 0.25;
+}
+
+/* ===== TITLE ===== */
+.hireme h2 {
+  font-size: 38px;
+  color: var(--brown-main);
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.hireme h2::after {
+  content: "";
+  width: 70px;
+  height: 3px;
+  background: var(--brown-soft);
+  display: block;
+  margin-top: 12px;
+  border-radius: 10px;
+}
+
+/* ===== LIST ===== */
+.hireme-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  list-style: none;
+  padding: 0;
+}
+
+.hireme-list li {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 20px 18px;
+  border-radius: 20px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  color: var(--brown-main);
+  font-weight: 500;
+  font-size: 15px;
+  position: relative;
+  transition: all 0.35s ease;
+}
+
+/* top accent line */
+.hireme-list li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35%;
+  height: 3px;
+  background: var(--pink-baby);
+  border-radius: 10px;
+  opacity: 0.7;
+}
+
+/* hover effect */
+.hireme-list li:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(107, 63, 45, 0.25);
+  background: var(--bg-white);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hireme {
+    padding: 60px 35px;
+  }
+
+  .hireme h2 {
+    font-size: 32px;
+  }
+
+  .hireme-list li {
+    font-size: 14px;
+    padding: 18px 14px;
+  }
+}

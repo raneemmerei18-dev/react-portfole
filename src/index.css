@@ -1,0 +1,82 @@
+/* ===== Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Color Palette (Soft Beige Girly) ===== */
+:root {
+  /* main palette */
+  --brown-main: #6b3f2d;
+  --brown-soft: #a07764;
+
+  --pink-baby: #f2b6c6;
+  --pink-soft: #f7cfd9;
+
+  --bg-main: #f6efe9;
+  --bg-white: #ffffff;
+
+  --text-dark: #2f2f2f;
+  --text-light: #7a7a7a;
+}
+
+
+/* ===== Base ===== */
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg-main);
+  color: var(--text-dark);
+  line-height: 1.8;
+}
+
+/* ===== Links ===== */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== Lists ===== */
+ul {
+  list-style: none;
+}
+
+/* ===== Sections ===== */
+section {
+  padding: 90px 60px;
+}
+
+/* ===== Titles ===== */
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 36px;
+  margin-bottom: 25px;
+  color: var(--text-dark);
+}
+
+/* ===== Paragraphs ===== */
+p {
+  font-size: 15px;
+  color: var(--text-light);
+  max-width: 600px;
+}
+
+/* ===== Cards ===== */
+.card {
+  background: var(--bg-white);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+}

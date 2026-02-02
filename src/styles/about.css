@@ -1,0 +1,107 @@
+/* ===== ABOUT SECTION ===== */
+.about {
+  background: linear-gradient(
+    135deg,
+    var(--bg-white) 60%,
+    var(--pink-soft)
+  );
+  border-radius: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 90px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.07);
+  position: relative;
+  overflow: hidden;
+}
+
+/* decorative circle */
+.about::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 200px;
+  height: 200px;
+  background: var(--pink-baby);
+  border-radius: 50%;
+  opacity: 0.25;
+}
+
+/* ===== TITLE ===== */
+.about h2 {
+  font-size: 42px;
+  color: var(--brown-main);
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* underline */
+.about h2::after {
+  content: "";
+  width: 70px;
+  height: 3px;
+  background: var(--brown-soft);
+  display: block;
+  margin-top: 12px;
+  border-radius: 10px;
+}
+
+/* ===== TEXT ===== */
+.about p {
+  font-size: 16px;
+  line-height: 1.9;
+  margin-bottom: 22px;
+  max-width: 700px;
+  color: var(--text-light);
+  position: relative;
+  padding-left: 22px;
+}
+
+/* soft accent line */
+.about p::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background: var(--pink-baby);
+  border-radius: 50%;
+}
+
+/* highlight keywords */
+.about p strong {
+  color: var(--brown-main);
+  font-weight: 500;
+}
+
+/* ===== ANIMATION ===== */
+.about {
+  animation: fadeUp 1.4s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .about {
+    padding: 60px 35px;
+  }
+
+  .about h2 {
+    font-size: 32px;
+  }
+
+  .about p {
+    font-size: 15px;
+  }
+}
