@@ -5,9 +5,9 @@ function Footer() {
     <footer className="footer">
       <p>© 2026 Raneem. All rights reserved.</p>
       <p>
-        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-          GitHub
-        </a>
+       
+          <a href="https://github.com/raneemmerei18-dev" target="_blank" rel="noopener noreferrer">GitHub</a>
+
       </p>
     </footer>
   );

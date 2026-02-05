@@ -1,5 +1,5 @@
 import "../styles/hero.css";
-import profile from "../assets/profile.jpeg"; // الاسم الصح
+import profile from "../assets/profile.jpeg"; 
 
 function Hero() {
   return (
@@ -9,7 +9,7 @@ function Hero() {
         <span className="hero-eyebrow">GET EVERY SINGLE SOLUTION</span>
 
         <h1 className="hero-title">
-          Hi, I’m <br /> <span>Raneem</span>
+          Hi, I’m <br /> <span>Raneem</span> Merei
         </h1>
 
         <h3 className="hero-subtitle">Frontend Developer</h3>
@@ -18,7 +18,7 @@ function Hero() {
 
         <div className="hero-actions">
           <a href="#projects" className="btn primary">View Projects</a>
-          <a href="#contact" className="btn secondary">Hire Me</a>
+          <a href="#hireme" className="btn secondary">Hire Me</a>
         </div>
       </div>
 
