@@ -1,39 +1,52 @@
 /* ===== FOOTER ===== */
 .footer {
-  background: var(--bg-white);
+  margin-top: 70px;
+  background: linear-gradient(155deg, var(--bg-white), rgba(247, 207, 217, 0.52));
   color: var(--brown-main);
 
   display: flex;
   flex-direction: column;
-  align-items: center;     
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
 
   text-align: center;
-  padding: 35px 20px;
+  padding: 36px 20px;
   font-size: 14px;
 
-  border-top: 2px solid var(--pink-soft);
-  box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
-  border-radius: 20px 20px 0 0;
+  border-top: 2px solid rgba(242, 182, 198, 0.7);
+  box-shadow: 0 -5px 24px rgba(107, 63, 45, 0.09);
+  border-radius: 34px 34px 0 0;
+  animation: footerLift 0.9s ease;
 }
 
 /* Links */
 .footer a {
-  color: var(--pink-baby);
+  color: var(--brown-soft);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   transition: all 0.3s ease;
 }
 
 /* hover effect */
 .footer a:hover {
-  color: var(--pink-soft);
+  color: var(--pink-baby);
   text-decoration: underline;
 }
 
 /* spacing */
 .footer p {
   margin: 6px 0;
+}
+
+@keyframes footerLift {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===== RESPONSIVE ===== */

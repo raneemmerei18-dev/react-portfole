@@ -19,15 +19,29 @@
 
   --text-dark: #2f2f2f;
   --text-light: #7a7a7a;
+
+  --shadow-soft: 0 16px 40px rgba(107, 63, 45, 0.12);
+  --shadow-strong: 0 28px 60px rgba(107, 63, 45, 0.2);
 }
 
 
 /* ===== Base ===== */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background: var(--bg-main);
   color: var(--text-dark);
   line-height: 1.8;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(circle at 8% 10%, rgba(242, 182, 198, 0.38) 0 12%, transparent 36%),
+    radial-gradient(circle at 88% 18%, rgba(160, 119, 100, 0.28) 0 10%, transparent 35%),
+    linear-gradient(135deg, var(--bg-main), #f4e5dd 52%, var(--pink-soft));
+  background-attachment: fixed;
 }
 
 /* ===== Links ===== */
@@ -55,9 +69,10 @@ h3 {
 }
 
 h2 {
-  font-size: 36px;
+  font-size: clamp(2rem, 2.4vw, 2.8rem);
   margin-bottom: 25px;
   color: var(--text-dark);
+  letter-spacing: 0.4px;
 }
 
 /* ===== Paragraphs ===== */
@@ -72,11 +87,17 @@ p {
   background: var(--bg-white);
   border-radius: 24px;
   padding: 30px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-soft);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-strong);
+}
+
+@media (max-width: 900px) {
+  section {
+    padding: 72px 24px;
+  }
 }

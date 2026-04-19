@@ -1,81 +1,148 @@
 /* ===== CONTACT SECTION ===== */
 .contact {
-  max-width: 900px;
-  margin: 120px auto;
-  padding: 80px 50px;
-  background: var(--brown-main); /* background بني */
-  border-radius: 40px;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.1);
+  max-width: 980px;
+  margin: 96px auto 0;
+  padding: 74px min(6vw, 58px);
+  background: linear-gradient(145deg, var(--brown-main), #7e4f3b 62%, var(--brown-soft));
+  border-radius: 42px;
+  box-shadow: 0 28px 70px rgba(107, 63, 45, 0.4);
   text-align: center;
   position: relative;
-  color: #fff; /* نص أبيض على البني */
+  color: #fff;
+  overflow: hidden;
+  animation: riseContact 0.9s ease;
+}
+
+.contact::before,
+.contact::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.contact::before {
+  width: 280px;
+  height: 280px;
+  left: -110px;
+  top: -110px;
+  background: radial-gradient(circle, rgba(242, 182, 198, 0.5), rgba(242, 182, 198, 0));
+  animation: pulseBlob 6s ease-in-out infinite;
+}
+
+.contact::after {
+  width: 240px;
+  height: 240px;
+  right: -90px;
+  bottom: -80px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.23), rgba(255, 255, 255, 0));
+  animation: pulseBlob 7s ease-in-out infinite;
 }
 
 /* ===== TITLE ===== */
 .contact h2 {
-  font-size: 38px;
-  margin-bottom: 25px;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  margin-bottom: 18px;
   position: relative;
   color: #fff;
 }
 
-/* underline pink */
 .contact h2::after {
   content: "";
-  width: 70px;
-  height: 3px;
+  width: 90px;
+  height: 4px;
   background: var(--pink-baby);
   display: block;
-  margin: 12px auto 0;
+  margin: 10px auto 0;
   border-radius: 10px;
 }
 
 /* ===== DESCRIPTION ===== */
 .contact p {
   font-size: 15px;
-  line-height: 1.7;
-  margin-bottom: 40px;
+  line-height: 1.8;
+  margin: 0 auto 30px;
+  max-width: 640px;
   color: #fff;
+  opacity: 0.9;
 }
 
 /* ===== LINKS ===== */
 .contact-links {
   display: flex;
   justify-content: center;
-  gap: 25px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
 .contact-links a {
   display: inline-block;
-  background: var(--pink-baby); /* كل الزرار وردي */
-  color: var(--brown-main); /* نص البني على الوردي */
+  background: var(--pink-baby);
+  color: var(--brown-main);
   font-weight: 600;
-  font-size: 15px;
-  padding: 18px 28px;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  padding: 14px 22px;
   border-radius: 30px;
   text-decoration: none;
   position: relative;
   transition: all 0.35s ease;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: buttonPop 0.8s ease both;
 }
 
-/* hover effect: lighten + glow */
+.contact-links a:nth-child(2) {
+  animation-delay: 0.14s;
+}
+
+.contact-links a:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
 .contact-links a:hover {
   background: var(--pink-soft);
   color: var(--brown-main);
-  box-shadow: 0 15px 40px rgba(255,192,203,0.5);
-  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(255, 192, 203, 0.5);
+  transform: translateY(-4px) scale(1.04);
+}
+
+@keyframes riseContact {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseBlob {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.09);
+  }
+}
+
+@keyframes buttonPop {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .contact {
-    padding: 60px 25px;
-  }
-
-  .contact h2 {
-    font-size: 32px;
+    padding: 56px 20px;
   }
 
   .contact p {
@@ -84,6 +151,6 @@
 
   .contact-links a {
     font-size: 14px;
-    padding: 16px 22px;
+    padding: 13px 18px;
   }
 }

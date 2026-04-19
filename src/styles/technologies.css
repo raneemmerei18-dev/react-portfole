@@ -1,74 +1,79 @@
 /* ===== TECHNOLOGIES SECTION ===== */
 .technologies {
-  max-width: 1100px;
-  margin: 120px auto;
-  padding: 80px 90px;
-  background: linear-gradient(
-    135deg,
-    var(--bg-white) 60%,
-    var(--pink-soft)
-  );
-  border-radius: 40px;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.08);
+  max-width: 1160px;
+  margin: 96px auto 0;
+  padding: 80px min(6vw, 72px);
+  background: linear-gradient(142deg, rgba(255, 255, 255, 0.95), rgba(247, 207, 217, 0.62));
+  border-radius: 42px;
+  box-shadow: 0 28px 72px rgba(107, 63, 45, 0.16);
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.72);
 }
 
-/* decorative glow */
 .technologies::before {
   content: "";
   position: absolute;
-  bottom: -120px;
-  left: -120px;
-  width: 260px;
-  height: 260px;
-  background: var(--pink-baby);
+  inset: -44% auto auto -18%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(242, 182, 198, 0.55), rgba(242, 182, 198, 0));
   border-radius: 50%;
-  opacity: 0.25;
+  animation: orbitBlob 12s linear infinite;
 }
 
 /* ===== TITLE ===== */
 .technologies h2 {
-  font-size: 40px;
+  font-size: clamp(2rem, 3vw, 2.6rem);
   color: var(--brown-main);
-  margin-bottom: 50px;
+  margin-bottom: 38px;
   position: relative;
 }
 
 .technologies h2::after {
   content: "";
-  width: 80px;
-  height: 3px;
-  background: var(--brown-soft);
+  width: 88px;
+  height: 4px;
+  background: linear-gradient(to right, var(--brown-soft), var(--pink-baby));
   display: block;
-  margin-top: 14px;
+  margin-top: 10px;
   border-radius: 10px;
 }
 
 /* ===== GRID ===== */
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 18px;
 }
 
 /* ===== CARD ===== */
 .tech-card {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(10px);
-  border-radius: 24px;
-  padding: 28px 20px;
+  border-radius: 22px;
+  padding: 24px 18px;
   text-align: center;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
   color: var(--brown-main);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 14px 34px rgba(107, 63, 45, 0.16);
   cursor: default;
   transition: all 0.35s ease;
   position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  animation: riseIn 0.7s ease both;
 }
 
-/* soft top accent */
+.tech-card:nth-child(2n) {
+  animation-delay: 0.1s;
+}
+
+.tech-card:nth-child(3n) {
+  animation-delay: 0.16s;
+}
+
 .tech-card::before {
   content: "";
   position: absolute;
@@ -82,25 +87,40 @@
   opacity: 0.7;
 }
 
-/* hover effect */
 .tech-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px) scale(1.03);
   box-shadow: 0 30px 60px rgba(107, 63, 45, 0.25);
   background: var(--bg-white);
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes orbitBlob {
+  from {
+    transform: rotate(0deg) translateX(24px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(24px) rotate(-360deg);
+  }
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .technologies {
-    padding: 60px 35px;
-  }
-
-  .technologies h2 {
-    font-size: 32px;
+    padding: 56px 22px;
   }
 
   .tech-card {
-    padding: 24px 16px;
-    font-size: 14px;
+    padding: 20px 14px;
+    font-size: 13px;
   }
 }
