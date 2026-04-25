@@ -44,8 +44,8 @@
 /* ===== GRID ===== */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 /* ===== CARD ===== */
@@ -53,20 +53,24 @@
   background: rgba(255, 255, 255, 0.74);
   backdrop-filter: blur(10px);
   border-radius: 24px;
-  padding: 24px 20px;
+  overflow: hidden;
   box-shadow: 0 14px 34px rgba(107, 63, 45, 0.16);
-  transition: all 0.35s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.72);
-  animation: cardIn 0.7s ease both;
+  animation: cardIn 0.7s ease both, cardFloat 6s ease-in-out infinite;
 }
 
 .project-card:nth-child(2n) {
-  animation-delay: 0.12s;
+  animation-delay: 0.12s, 0.2s;
 }
 
 .project-card:nth-child(3n) {
-  animation-delay: 0.24s;
+  animation-delay: 0.24s, 0.38s;
+}
+
+.project-card:nth-child(4n) {
+  animation-delay: 0.3s, 0.5s;
 }
 
 .project-card::before {
@@ -86,6 +90,41 @@
   transform: translateY(-8px) scale(1.015);
   box-shadow: 0 30px 60px rgba(107, 63, 45, 0.25);
   background: rgba(255, 255, 255, 0.95);
+}
+
+.project-media {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+}
+
+.project-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(107, 63, 45, 0.18));
+}
+
+.project-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.project-content {
+  padding: 18px 18px 20px;
+  position: relative;
+}
+
+.project-content::after {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(160, 119, 100, 0.25);
 }
 
 /* ===== CARD CONTENT ===== */
@@ -119,6 +158,14 @@
   border-color: var(--pink-baby);
 }
 
+.project-card:hover .project-media img {
+  transform: scale(1.08);
+}
+
+.project-card:hover .project-content {
+  animation: contentLift 0.45s ease;
+}
+
 @keyframes cardIn {
   from {
     opacity: 0;
@@ -126,6 +173,25 @@
   }
   to {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes contentLift {
+  from {
+    transform: translateY(2px);
+  }
+  to {
     transform: translateY(0);
   }
 }
@@ -146,11 +212,24 @@
     padding: 56px 22px;
   }
 
+  .project-media {
+    height: 170px;
+  }
+
   .project-card h3 {
     font-size: 18px;
   }
 
   .project-card p {
     font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects::before,
+  .project-card,
+  .project-media img {
+    animation: none;
+    transition: none;
   }
 }

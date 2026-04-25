@@ -1,4 +1,61 @@
 import "../styles/projects.css";
+import fitnessCenterImg from "../assets/projects/fitness-center.PNG";
+import giftyImg from "../assets/projects/gifty.PNG";
+import smartBeautyCenterImg from "../assets/projects/smart-beauty-center.PNG";
+import tasklyImg from "../assets/projects/taskly.PNG";
+import animalShopImg from "../assets/projects/animal-shop.png";
+import portfolioImg from "../assets/projects/raneem-portfolio.PNG";
+
+const projects = [
+  {
+    title: "Fitness Center",
+    image: fitnessCenterImg,
+    description:
+      "Developed a responsive web application with optimized routing and integrated database management.",
+    technologies: "Next.js, TypeScript, MongoDB",
+    link: "https://github.com/raneemmerei18-dev/fitness-center",
+  },
+  {
+    title: "gifty",
+    image: giftyImg,
+    description:
+      "Built an interactive application with real-time data handling and dynamic user interface.",
+    technologies: "React, TypeScript, MongoDB",
+    link: "https://github.com/raneemmerei18-dev/gifty",
+  },
+  {
+    title: "smart_beauty_center",
+    image: smartBeautyCenterImg,
+    description:
+      "Created a full-stack system with authentication and booking functionality.",
+    technologies: "HTML, CSS, PHP",
+    link: "https://github.com/raneemmerei18-dev/smart_beauty_center",
+  },
+  {
+    title: "Taskly",
+    image: tasklyImg,
+    description:
+      "Developed a task management app with full CRUD operations and structured backend APIs.",
+    technologies: "Vue, NestJS",
+    link: "https://github.com/raneemmerei18-dev/taskly",
+  },
+  {
+    title: "animalSop",
+    image: animalShopImg,
+    description:
+      "Built an e-commerce website with product listing and basic transaction flow.",
+    technologies: "HTML, CSS, PHP",
+    link: "https://github.com/raneemmerei18-dev/animalSop",
+  },
+  {
+    title: "Raneem_portfolio",
+    image: portfolioImg,
+    description:
+      "Designed and developed a personal portfolio website to showcase projects and skills.",
+    technologies: "React",
+    link: "https://github.com/raneemmerei18-dev/Raneem_portfolio",
+  },
+];
 
 function Projects() {
   return (
@@ -6,37 +63,24 @@ function Projects() {
       <h2>My Projects</h2>
 
       <div className="projects-grid">
-        {/* Project 1 */}
-        <div className="project-card">
-          <h3>Portfolio Website</h3>
-          <p>A personal website to showcase my skills and projects using React.</p>
-          <p><strong>Technologies:</strong> React, CSS, JavaScript</p>
-          <a href="https://github.com/yourusername/portfolio" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
+        {projects.map((project) => (
+          <article className="project-card" key={project.title}>
+            <div className="project-media">
+              <img src={project.image} alt={project.title} />
+            </div>
 
-        {/* Project 2 */}
-         <div className="project-card">
-    <h3>Smart Beauty Center</h3>
-    <p>A full-stack web application developed as my Senior Project</p>
-    <p><strong>Technologies:</strong> HTML, CSS, JavaScript, PHP, MySQL</p>
-    <a href="https://github.com/yourusername/smart-beauty-center" target="_blank" rel="noopener noreferrer">GitHub</a>
-  </div>
-
-     {/* Project 3*/}
-<div className="project-card">
-  <h3>Thief in Home Robotics</h3>
-  <p>An automated home security system designed to detect intruders and alert users in real-time.</p>
-  <p><strong>Technologies:</strong> ESP8266, Gas Sensor, PIR Sensor, Keypad, LCD, RGB</p>
-  <a href="https://github.com/yourusername/thief-in-home" target="_blank" rel="noopener noreferrer">GitHub</a>
-</div>
-{/* Project 4*/}
-<div className="project-card">
-  <h3>Simple Animal Shop</h3>
-  <p>A full-stack e-commerce website for buying, selling, and adopting animals with cart and checkout functionality.</p>
-  <p><strong>Technologies:</strong> HTML, CSS, PHP, MySQL, JavaScript</p>
-  <a href="https://github.com/yourusername/animal-shop" target="_blank" rel="noopener noreferrer">GitHub</a>
-</div>
-
+            <div className="project-content">
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <p>
+                <strong>Technologies:</strong> {project.technologies}
+              </p>
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                View Project
+              </a>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

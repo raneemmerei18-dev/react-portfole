@@ -3,73 +3,99 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(246, 239, 233, 0.92);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(107, 63, 45, 0.1);
-  animation: headerSlideIn 0.8s ease;
+  background: rgba(246, 239, 233, 0.68);
   overflow: hidden;
+  pointer-events: auto;
 }
 
 .header::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(242, 182, 198, 0.08), transparent 28%, transparent 72%, rgba(160, 119, 100, 0.08));
+  background:
+    linear-gradient(135deg, rgba(246, 239, 233, 0.96), rgba(255, 255, 255, 0.84)),
+    radial-gradient(circle at 12% 20%, rgba(242, 182, 198, 0.18), transparent 30%),
+    radial-gradient(circle at 88% 18%, rgba(160, 119, 100, 0.12), transparent 28%);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(107, 63, 45, 0.08);
+  box-shadow: 0 8px 28px rgba(107, 63, 45, 0.08);
   pointer-events: none;
 }
 
 /* ===== NAV ===== */
 .nav {
-  max-width: 1240px;
-  margin: auto;
-  padding: 16px 56px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 14px 34px;
   display: flex;
   align-items: center;
-  gap: 26px;
+  justify-content: space-between;
+  gap: 18px;
   position: relative;
   z-index: 1;
+  background: rgba(255, 255, 255, 0.64);
+  border: 1px solid rgba(160, 119, 100, 0.12);
+  border-top: none;
+  border-radius: 0 0 28px 28px;
+  box-shadow: 0 14px 32px rgba(107, 63, 45, 0.08);
 }
 
 /* ===== LOGO ===== */
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px 10px 14px;
+  border-radius: 18px 30px 18px 30px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(160, 119, 100, 0.14);
+  box-shadow: 0 12px 26px rgba(107, 63, 45, 0.08);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.logo-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(107, 63, 45, 0.12);
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.logo-orb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink-baby), var(--brown-soft));
+  box-shadow: 0 0 0 7px rgba(242, 182, 198, 0.14);
+  flex-shrink: 0;
+  animation: orbPulse 3.8s ease-in-out infinite;
+}
+
 .logo {
   font-family: "Playfair Display", serif;
-  font-size: 35px;
+  font-size: 42px;
   font-weight: 600;
-  letter-spacing: 1.8px;
+  letter-spacing: 1px;
   color: var(--brown-main);
   position: relative;
   white-space: nowrap;
   animation: logoFloat 5s ease-in-out infinite;
 }
 
-/* accent dot */
 .logo::before {
-  content: "";
-  position: absolute;
-  left: -14px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 10px;
-  background: var(--pink-baby);
-  border-radius: 50%;
-  box-shadow: 0 0 18px rgba(242, 182, 198, 0.95);
+  content: none;
 }
 
-/* underline */
 .logo::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -6px;
-  width: 60%;
-  height: 3px;
-  background: linear-gradient(
-    to right,
-    var(--brown-soft),
-    transparent
-  );
-  border-radius: 20px;
+  bottom: -5px;
+  width: 52%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--brown-soft), rgba(160, 119, 100, 0));
+  border-radius: 999px;
 }
 
 .logo span {
@@ -80,26 +106,31 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 30px;
-  margin-left: auto;
+  justify-content: center;
+  flex: 1;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.48);
+  border: 1px solid rgba(160, 119, 100, 0.12);
 }
 
 .nav-link {
-  font-family: "Poppins", sans-serif;
-  font-size: 13px;
+  font-family: "Fredoka", sans-serif;
+  font-size: 18px;
   font-weight: 600;
-  letter-spacing: 0.9px;
-  color: var(--text-light);
+  letter-spacing: 0.3px;
+  color: var(--brown-main);
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 14px;
+  padding: 13px 18px;
   border-radius: 999px;
   overflow: hidden;
   transform: translateY(0);
   animation: linkAppear 0.7s ease both;
-  transition: color 0.3s ease, transform 0.35s ease;
+  transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-link:nth-child(1) { animation-delay: 0.05s; }
@@ -119,7 +150,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(242, 182, 198, 0.28), rgba(255, 255, 255, 0.72));
+  background: linear-gradient(135deg, rgba(242, 182, 198, 0.38), rgba(255, 255, 255, 0.82));
   opacity: 0;
   transform: scale(0.88);
   transition: opacity 0.25s ease, transform 0.25s ease;
@@ -128,9 +159,9 @@
 .nav-link::after {
   content: "";
   position: absolute;
-  left: 18%;
-  right: 18%;
-  bottom: 7px;
+  left: 20%;
+  right: 20%;
+  bottom: 8px;
   height: 2px;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--pink-baby), var(--brown-soft));
@@ -142,6 +173,7 @@
 .nav-link:hover {
   color: var(--brown-main);
   transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(107, 63, 45, 0.08);
 }
 
 .nav-link:hover::before {
@@ -162,9 +194,11 @@
     var(--brown-soft)
   );
   border: 1px solid rgba(255, 255, 255, 0.35);
-  padding: 10px 18px;
+  padding: 12px 21px;
   border-radius: 999px;
-  font-size: 13px;
+  font-size: 14px;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
   color: white;
   cursor: pointer;
   box-shadow: 0 12px 28px rgba(107, 63, 45, 0.26);
@@ -188,16 +222,6 @@
   }
 }
 
-@keyframes logoPulse {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-2px);
-  }
-}
-
 @keyframes logoFloat {
   0%,
   100% {
@@ -205,6 +229,16 @@
   }
   50% {
     transform: translateY(-1.5px);
+  }
+}
+
+@keyframes orbPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
   }
 }
 
@@ -222,19 +256,19 @@
 /* ===== TABLET ===== */
 @media (max-width: 1024px) {
   .nav {
-    padding: 14px 24px;
+    padding: 14px 20px;
     flex-wrap: wrap;
     justify-content: center;
   }
 
   .logo {
-    font-size: 32px;
+    font-size: 38px;
   }
 
   .nav-links {
-    gap: 10px;
-    justify-content: center;
-    margin-left: 0;
+    padding: 11px 15px;
+    font-size: 13px;
+    flex: 0 0 100%;
   }
 }
 
@@ -243,12 +277,15 @@
   .nav {
     flex-direction: column;
     gap: 12px;
+    padding: 12px 16px;
   }
 
   .nav-links {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
+    background: transparent;
+    border: none;
   }
 
   .contact-btn {
@@ -256,6 +293,12 @@
   }
 
   .logo {
-    font-size: 28px;
+    font-size: 34px;
   }
+
+  .logo-link {
+    width: 100%;
+    justify-content: center;
+  }
+
 }

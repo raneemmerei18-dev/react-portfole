@@ -4,9 +4,12 @@ function Header() {
   return (
     <header className="header">
       <nav className="nav">
-        <h1 className="logo">
-          Ran<span>eem</span>
-        </h1>
+        <a href="#hero" className="logo-link" aria-label="Back to home section">
+          <span className="logo-orb" aria-hidden="true" />
+          <span className="logo">
+            Ran<span>eem</span>
+          </span>
+        </a>
 
         <ul className="nav-links">
           <li><a href="#hero" className="nav-link"><span>Home</span></a></li>

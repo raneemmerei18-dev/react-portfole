@@ -43,7 +43,7 @@
 /* ===== GRID ===== */
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 18px;
 }
 
@@ -52,26 +52,66 @@
   background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(10px);
   border-radius: 22px;
-  padding: 24px 18px;
+  padding: 20px 16px 18px;
   text-align: center;
-  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 138px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.3px;
   color: var(--brown-main);
   box-shadow: 0 14px 34px rgba(107, 63, 45, 0.16);
   cursor: default;
-  transition: all 0.35s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.72);
-  animation: riseIn 0.7s ease both;
+  overflow: hidden;
+  animation: riseIn 0.7s ease both, cardDrift 6s ease-in-out infinite;
+}
+
+.tech-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--tech-color, #a07764) 16%, white);
+  border: 1px solid color-mix(in srgb, var(--tech-color, #a07764) 38%, white);
+  color: var(--tech-color, var(--brown-main));
+  font-size: 30px;
+  flex-shrink: 0;
+  transition: transform 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+  animation: iconBob 3s ease-in-out infinite;
+  box-shadow:
+    0 10px 20px color-mix(in srgb, var(--tech-color, #a07764) 26%, transparent),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.75);
+}
+
+.tech-icon svg {
+  width: 1em;
+  height: 1em;
+}
+
+.tech-label {
+  line-height: 1.25;
+  font-size: 13px;
 }
 
 .tech-card:nth-child(2n) {
-  animation-delay: 0.1s;
+  animation-delay: 0.1s, 0.2s;
 }
 
 .tech-card:nth-child(3n) {
-  animation-delay: 0.16s;
+  animation-delay: 0.16s, 0.35s;
+}
+
+.tech-card:nth-child(4n) {
+  animation-delay: 0.22s, 0.5s;
 }
 
 .tech-card::before {
@@ -80,17 +120,52 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 40%;
-  height: 3px;
-  background: var(--pink-baby);
+  width: 42%;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--tech-color, var(--pink-baby)) 72%, white),
+    color-mix(in srgb, var(--tech-color, var(--pink-baby)) 30%, white)
+  );
   border-radius: 10px;
-  opacity: 0.7;
+  opacity: 0.95;
+}
+
+.tech-card::after {
+  content: "";
+  position: absolute;
+  top: -130%;
+  left: -30%;
+  width: 50%;
+  height: 280%;
+  transform: rotate(20deg);
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.55),
+    rgba(255, 255, 255, 0)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .tech-card:hover {
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 30px 60px rgba(107, 63, 45, 0.25);
   background: var(--bg-white);
+}
+
+.tech-card:hover .tech-icon {
+  transform: rotate(-8deg) scale(1.14);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 16px 28px color-mix(in srgb, var(--tech-color, #a07764) 40%, transparent),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+}
+
+.tech-card:hover::after {
+  opacity: 1;
+  animation: shineRun 0.9s ease;
 }
 
 @keyframes riseIn {
@@ -101,6 +176,35 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes cardDrift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes iconBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes shineRun {
+  from {
+    transform: translateX(-120%) rotate(20deg);
+  }
+  to {
+    transform: translateX(340%) rotate(20deg);
   }
 }
 
@@ -120,7 +224,22 @@
   }
 
   .tech-card {
-    padding: 20px 14px;
+    padding: 18px 12px;
     font-size: 13px;
+    min-height: 126px;
+  }
+
+  .tech-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-card,
+  .tech-icon,
+  .technologies::before {
+    animation: none;
   }
 }
